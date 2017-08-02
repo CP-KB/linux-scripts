@@ -1,0 +1,97 @@
+Windows/Ubuntu Security Checklist
+
+*** Windows *** reminder different versions will have different things/ways to check
+	
+	Comparison to standard image
+	Give all users proper privileges
+	Remove unusual/rogue users
+	Set proper user settings (pass expire, etc)
+		Allow password to expire
+	Set password requirements
+		Min length=10
+		Max age=90
+		Min age=?
+		
+	Set account lockout settings
+	Disable unnecessary services
+	Disable unnecessary startup applications (msconfig)
+	Disable remote desktop connections (or at least don't allow unsecure)
+	Check for and remove malware/unneeded applications
+	Check for and remove `hacking` applications (ophcrack, hashcat, cain & abel, etc)
+	Set security policies (secpol.msc)
+	Configure firewall properly
+	Configure updates properly
+	Delete non work/unnecessary files like music, videos, personal junk (insecure)
+		find/locate *.mp3 *.mp4 *.jpg *.png *.txt passwords.txt
+	Check Registry for wierd entries
+	
+*** Linux	***
+
+	Comparison to standard image
+	Check for newer date of files compared to when os may have been installed
+	Check for unauthorized users (/etc/passwd)
+	Check the groups that users are in (/etc/group)
+	Disable unneeded/unsecure services (bum, services)
+	Look for unsecure configurations in /etc/
+	Look for interesting logs in /var/log/
+	Make sure firewall is configured properly and running (ufw, gufw)
+	Check file permissions (ex. file in /home/bob/ owned by joe with group of root)
+	Look for suspicious software/packages and remove
+	Look for and remove `hacking` software
+	Set password requirements
+	Set account lockout requirements
+	Setup login page correctly
+	Check the header of unknown files (is "message" actually a zip or a pdf)
+	Disable use of root user (only use sudo)
+	Nmap for open ports on localhost
+	Update unsecure/old software
+	Check running processes for suspicious activity
+	
+	
+*** TODO LINUX/WINDOWS SCRIPT/PROGRAM ***
+
+	Compare filesystem
+	Parse /etc/passwd and /etc/group
+	Auto locate executables in home directories
+	Search packages for known list of hacking tools
+	Compare packages with fresh install packages
+	
+	
+***	IDEAS
+
+	Create a program that runs in ubuntu or any Linux distro
+	which does the analysis on a read only copy of an OSs fs.
+	A report is generated with suggested fixes. Each has ch-
+	eck boxes to decide which are to be done. The program 
+	running in the host generates a bash script to do the ch-
+	anges that were selected. It can also generate a bash
+	script to undo the selected changes.
+	
+		Example. Run script to change. Check points.
+		If points lost, undo the options that didn't
+		gain points.
+			(maybe the app can zip up the removed files so
+			 that they can be put back into place if need
+			 be)
+	
+	This program should be able to do checks in any type of
+	Linux distro or Windows version. Possibly for Windows
+	a batch script or powershell script could be generated.
+	Even maybe a g++ compiled binary that does what is required by
+	using c++ code created on the fly from rules in the scanning app.
+	
+	
+	
+	There may be registry tools and parsing tools out there for
+	windows configurations and linux configurations. Maybe
+	these could be incorporated into the app.
+	
+	
+	Ultimately, the app needs so many rules, that there will be
+	barely anything that the app doesn't check. I suggest that
+	there should be an easy way of adding rules/parsers for when
+	there are newer versions of os's or new hacking software to
+	look for. Maybe a database. XML, SQL not sure.
+
+	It would be nice to have cross platform GUI - wxWidgets or Qt could work,
+however I like the license for wxWidgets better.
